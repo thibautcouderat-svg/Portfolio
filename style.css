@@ -13,6 +13,7 @@ body {
     background: #08090d;
     color: #f5f5f5;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
@@ -21,7 +22,9 @@ a {
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 header {
     position: fixed;
@@ -29,8 +32,10 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 7%;
-    background: rgba(8, 9, 13, 0.85);
-    backdrop-filter: blur(12px);
+
+    background: rgba(8, 9, 13, 0.75);
+    backdrop-filter: blur(16px);
+
     z-index: 100;
     border-bottom: 1px solid #1c1f27;
 }
@@ -38,6 +43,7 @@ header {
 nav {
     max-width: 1200px;
     margin: auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,6 +52,11 @@ nav {
 .logo {
     font-size: 24px;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.logo:hover {
+    color: #7c8cff;
 }
 
 .nav-links {
@@ -54,7 +65,24 @@ nav {
 }
 
 .nav-links a {
+    position: relative;
+
     color: #aaa;
+    transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #7c8cff;
+
     transition: 0.3s;
 }
 
@@ -62,8 +90,14 @@ nav {
     color: white;
 }
 
+.nav-links a:hover::after {
+    width: 100%;
+}
 
-/* SECTIONS */
+
+/* =========================
+   SECTIONS
+========================= */
 
 section {
     max-width: 1100px;
@@ -71,11 +105,40 @@ section {
     padding: 120px 30px;
 }
 
+
+/* =========================
+   ACCUEIL
+========================= */
+
 .hero {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    position: relative;
+}
+
+/* Lumière derrière le texte */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    left: 10%;
+    top: 30%;
+
+    background: #7c8cff;
+
+    filter: blur(180px);
+    opacity: 0.08;
+
+    pointer-events: none;
 }
 
 .intro,
@@ -86,9 +149,14 @@ section {
 }
 
 .hero h1 {
+    position: relative;
+
     font-size: clamp(60px, 10vw, 120px);
     line-height: 0.95;
+
     margin: 20px 0;
+
+    letter-spacing: -4px;
 }
 
 .hero h1 span {
@@ -103,12 +171,15 @@ section {
 
 .description {
     max-width: 600px;
+
     color: #999;
     font-size: 18px;
 }
 
 
-/* BOUTONS */
+/* =========================
+   BOUTONS
+========================= */
 
 .buttons {
     display: flex;
@@ -118,39 +189,62 @@ section {
 
 .button {
     padding: 13px 25px;
+
     border-radius: 8px;
+
     background: #7c8cff;
     color: white;
+
     font-weight: bold;
+
+    box-shadow: 0 0 25px rgba(124, 140, 255, 0.15);
+
     transition: 0.3s;
 }
 
 .button:hover {
-    transform: translateY(-3px);
-    opacity: 0.85;
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 30px rgba(124, 140, 255, 0.25);
+
+    opacity: 0.9;
 }
 
 .button.secondary {
     background: transparent;
     border: 1px solid #333743;
+    box-shadow: none;
+}
+
+.button.secondary:hover {
+    border-color: #7c8cff;
+    color: #7c8cff;
 }
 
 
-/* TITRES */
+/* =========================
+   TITRES
+========================= */
 
 section h2 {
     font-size: 50px;
     margin: 10px 0 30px;
+
+    letter-spacing: -1px;
 }
 
 section > p:not(.section-label) {
     max-width: 750px;
+
     color: #aaa;
+
     margin-bottom: 20px;
 }
 
 
-/* PROJETS */
+/* =========================
+   PROJETS
+========================= */
 
 .projects {
     display: grid;
@@ -159,16 +253,55 @@ section > p:not(.section-label) {
 }
 
 .project {
+    position: relative;
+
     padding: 30px;
+
+    min-height: 300px;
+
     border: 1px solid #242733;
     border-radius: 12px;
-    background: #0d0f15;
+
+    background: linear-gradient(
+        145deg,
+        #0f1118,
+        #0b0d12
+    );
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.project::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: #7c8cff;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
     transition: 0.3s;
 }
 
 .project:hover {
     transform: translateY(-8px);
-    border-color: #7c8cff;
+
+    border-color: #34394b;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.project:hover::before {
+    transform: scaleX(1);
 }
 
 .project-number {
@@ -194,64 +327,102 @@ section > p:not(.section-label) {
 
 .tags span {
     padding: 5px 10px;
+
     border-radius: 20px;
+
     background: #191c26;
+
     color: #aaa;
+
     font-size: 13px;
+
+    border: 1px solid #252936;
 }
 
 
-/* COMPÉTENCES */
+/* =========================
+   COMPÉTENCES
+========================= */
 
 .skills {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 15px;
 }
 
 .skill {
     padding: 25px;
+
     border: 1px solid #242733;
     border-radius: 10px;
+
     background: #0d0f15;
+
     font-size: 20px;
     font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-4px);
+
+    border-color: #7c8cff;
+
+    background: #10121a;
 }
 
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 .contact-links {
     display: flex;
     gap: 20px;
+
     margin-top: 30px;
 }
 
 .contact-links a {
     padding: 12px 25px;
+
     border: 1px solid #333743;
     border-radius: 8px;
+
     transition: 0.3s;
 }
 
 .contact-links a:hover {
     border-color: #7c8cff;
+
     color: #7c8cff;
+
+    transform: translateY(-3px);
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     border-top: 1px solid #1c1f27;
+
     padding: 30px 7%;
+
     display: flex;
     justify-content: space-between;
+
     color: #666;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 800px) {
 
@@ -265,6 +436,11 @@ footer {
 
     .hero h1 {
         font-size: 65px;
+        letter-spacing: -3px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
     }
 
     .projects {
@@ -282,5 +458,10 @@ footer {
     footer {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
