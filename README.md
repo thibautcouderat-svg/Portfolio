@@ -1,2 +1,2 @@
-# Portfolio
-Portfolio personnel - Thibaut COUDERAT
+# Thibaut COUDERAT
+Étudiant en BUT Informatique
