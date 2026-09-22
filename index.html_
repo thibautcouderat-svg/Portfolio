@@ -149,9 +149,12 @@
 
 
     <footer>
-        <p>© 2026 Thibaut COUDERAT</p>
-        <p>Portfolio personnel</p>
-    </footer>
+    <p>© 2026 Thibaut COUDERAT</p>
+    <p>Portfolio personnel</p>
+</footer>
+
+</body>
+</html>
 
 </body>
 </html>
