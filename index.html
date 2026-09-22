@@ -9,18 +9,32 @@
 
 <body>
 
-    <header>
+    <!-- Fond en grille + lumière qui suit la souris + curseur personnalisé -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="mouse-glow" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Barre de progression de scroll -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <header id="site-header">
         <nav>
-            <a href="#" class="logo">Tibo.</a>
+            <a href="#" class="logo" id="logo">Tibo.</a>
 
             <div class="nav-links">
                 <a href="#accueil">Accueil</a>
                 <a href="#apropos">À propos</a>
+                <a href="#parcours">Parcours</a>
                 <a href="#projets">Projets</a>
                 <a href="#competences">Compétences</a>
                 <a href="#diplomes">Diplômes</a>
                 <a href="#contact">Contact</a>
             </div>
+
+            <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème (clair/sombre)" title="Changer de thème">
+                🌙
+            </button>
         </nav>
     </header>
 
@@ -32,6 +46,10 @@
             <h1>Thibaut<br><span>COUDERAT</span></h1>
 
             <h2>Étudiant en BUT Informatique</h2>
+
+            <p class="typed-line" id="typed-line" aria-live="polite">
+                <span id="typed-text"></span><span class="typed-cursor" aria-hidden="true"></span>
+            </p>
 
             <p class="description">
                 Passionné par l'informatique, la programmation
@@ -63,13 +81,74 @@
         </section>
 
 
+        <section id="stats" class="reveal">
+            <p class="section-label">02 — EN CHIFFRES</p>
+            <h2>Quelques chiffres</h2>
+
+            <div class="stats">
+                <div class="reveal-item" style="--delay: 0s">
+                    <div class="stat-number" data-count="9">0</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="reveal-item" style="--delay: 0.1s">
+                    <div class="stat-number" data-count="2">0</div>
+                    <div class="stat-label">Projets</div>
+                </div>
+                <div class="reveal-item" style="--delay: 0.2s">
+                    <div class="stat-number" data-count="1">0</div>
+                    <div class="stat-label">Diplôme</div>
+                </div>
+                <div class="reveal-item" style="--delay: 0.3s">
+                    <div class="stat-number" data-static="∞">∞</div>
+                    <div class="stat-label">Idées de projets</div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="parcours" class="reveal">
+            <p class="section-label">03 — PARCOURS</p>
+            <h2>Mon parcours</h2>
+
+            <div class="timeline">
+                <div class="timeline-item reveal-item" style="--delay: 0s">
+                    <p class="timeline-date">2024 — 2025</p>
+                    <h3>Terminale générale</h3>
+                    <ul>
+                        <li>Mathématiques</li>
+                        <li>Physique-Chimie</li>
+                        <li>Mathématiques expertes</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item reveal-item" style="--delay: 0.15s">
+                    <p class="timeline-date">2026</p>
+                    <h3>Baccalauréat général — Mention</h3>
+                </div>
+
+                <div class="timeline-item reveal-item" style="--delay: 0.3s">
+                    <p class="timeline-date">2026 → aujourd'hui</p>
+                    <h3>BUT Informatique</h3>
+                </div>
+            </div>
+        </section>
+
+
         <section id="projets" class="reveal">
-            <p class="section-label">02 — PROJETS</p>
+            <p class="section-label">04 — PROJETS</p>
             <h2>Mes projets</h2>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="tous">Tous</button>
+                <button class="filter-btn" data-filter="cpp">C++</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="bash">Bash</button>
+                <button class="filter-btn" data-filter="bdd">Bases de données</button>
+            </div>
 
             <div class="projects">
 
-                <article class="project">
+                <article class="project tilt reveal-item" data-category="cpp" style="--delay: 0s">
                     <span class="project-number">01</span>
                     <h3>Projet C++</h3>
                     <p>
@@ -82,7 +161,7 @@
                     </div>
                 </article>
 
-                <article class="project">
+                <article class="project tilt reveal-item" data-category="web" style="--delay: 0.1s">
                     <span class="project-number">02</span>
                     <h3>Portfolio</h3>
                     <p>
@@ -96,7 +175,7 @@
                     </div>
                 </article>
 
-                <article class="project">
+                <article class="project tilt reveal-item" data-category="cpp web bash bdd" style="--delay: 0.2s">
                     <span class="project-number">03</span>
                     <h3>À venir...</h3>
                     <p>
@@ -113,12 +192,12 @@
 
 
         <section id="competences" class="reveal">
-            <p class="section-label">03 — COMPÉTENCES</p>
+            <p class="section-label">05 — COMPÉTENCES</p>
             <h2>Technologies</h2>
             <p class="skills-hint">Survole (ou touche) un langage pour voir mon niveau.</p>
 
             <div class="skills">
-                <div class="skill" style="--level: 80%">
+                <div class="skill tilt reveal-item" style="--level: 80%; --delay: 0s">
                     <span class="skill-name">C++</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -126,7 +205,7 @@
                     </div>
                 </div>
 
-                <div class="skill" style="--level: 50%">
+                <div class="skill tilt reveal-item" style="--level: 50%; --delay: 0.05s">
                     <span class="skill-name">HTML</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -134,7 +213,7 @@
                     </div>
                 </div>
 
-                <div class="skill" style="--level: 50%">
+                <div class="skill tilt reveal-item" style="--level: 50%; --delay: 0.1s">
                     <span class="skill-name">CSS</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -142,19 +221,19 @@
                     </div>
                 </div>
 
-                <div class="skill">
+                <div class="skill tilt reveal-item" style="--delay: 0.15s">
                     <span class="skill-name">JavaScript</span>
                 </div>
 
-                <div class="skill">
+                <div class="skill tilt reveal-item" style="--delay: 0.2s">
                     <span class="skill-name">Git</span>
                 </div>
 
-                <div class="skill">
+                <div class="skill tilt reveal-item" style="--delay: 0.25s">
                     <span class="skill-name">GitHub</span>
                 </div>
 
-                <div class="skill" style="--level: 50%">
+                <div class="skill tilt reveal-item" style="--level: 50%; --delay: 0.3s">
                     <span class="skill-name">Java</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -162,7 +241,7 @@
                     </div>
                 </div>
 
-                <div class="skill" style="--level: 80%">
+                <div class="skill tilt reveal-item" style="--level: 80%; --delay: 0.35s">
                     <span class="skill-name">Bash</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -170,7 +249,7 @@
                     </div>
                 </div>
 
-                <div class="skill" style="--level: 80%">
+                <div class="skill tilt reveal-item" style="--level: 80%; --delay: 0.4s">
                     <span class="skill-name">Bases de données</span>
                     <div class="skill-level">
                         <div class="skill-bar"><div class="skill-bar-fill"></div></div>
@@ -181,16 +260,32 @@
         </section>
 
 
+        <section id="actuellement" class="reveal">
+            <p class="section-label">06 — EN COURS D'APPRENTISSAGE</p>
+            <h2>Ce que j'apprends actuellement</h2>
+
+            <div class="badges">
+                <div class="badge reveal-item" style="--delay: 0s"><span class="badge-icon">🧮</span> Algorithmique</div>
+                <div class="badge reveal-item" style="--delay: 0.05s"><span class="badge-icon">💻</span> C++</div>
+                <div class="badge reveal-item" style="--delay: 0.1s"><span class="badge-icon">🗄️</span> Bases de données</div>
+                <div class="badge reveal-item" style="--delay: 0.15s"><span class="badge-icon">🌐</span> Développement web</div>
+                <div class="badge reveal-item" style="--delay: 0.2s"><span class="badge-icon">📡</span> Réseaux</div>
+                <div class="badge reveal-item" style="--delay: 0.25s"><span class="badge-icon">🔧</span> Git / GitHub</div>
+            </div>
+        </section>
+
+
         <section id="diplomes" class="reveal">
-            <p class="section-label">04 — DIPLÔMES &amp; CERTIFICATIONS</p>
+            <p class="section-label">07 — DIPLÔMES &amp; CERTIFICATIONS</p>
             <h2>Diplômes &amp; Certifications</h2>
 
             <div class="diplomas">
-                <article class="diploma-card">
+                <article class="diploma-card tilt reveal-item" style="--delay: 0s">
                     <div class="diploma-icon">🎓</div>
                     <h3>Baccalauréat général — Mention</h3>
                     <ul>
-                        <li>Spécialités : Mathématiques et Physique-Chimie</li>
+                        <li>Spécialité : Mathématiques</li>
+                        <li>Spécialité : Physique-Chimie</li>
                         <li>Option : Mathématiques expertes</li>
                     </ul>
                 </article>
@@ -198,8 +293,58 @@
         </section>
 
 
+        <section id="github" class="reveal">
+            <p class="section-label">08 — GITHUB</p>
+            <h2>Mes projets GitHub</h2>
+
+            <div class="github-box">
+                <p style="margin-bottom: 0; max-width: 500px;">
+                    Retrouve l'ensemble de mon code et le suivi de
+                    mes projets directement sur mon profil GitHub.
+                </p>
+                <a href="https://github.com/thibautcouderat-svg" target="_blank" class="button">
+                    Voir mon GitHub
+                </a>
+            </div>
+        </section>
+
+
+        <section id="terminal-section" class="reveal">
+            <p class="section-label">09 — TERMINAL</p>
+            <h2>Petit terminal</h2>
+
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">thibaut@portfolio: ~</span>
+                </div>
+
+                <div class="terminal-body" id="terminal-body">
+                    <p class="terminal-line prompt">$ whoami</p>
+                    <p class="terminal-line">&gt; Thibaut</p>
+                    <p class="terminal-line prompt">$ skills</p>
+                    <p class="terminal-line">&gt; C++ ........ 80%</p>
+                    <p class="terminal-line">&gt; Bash ....... 80%</p>
+                    <p class="terminal-line">&gt; Java ....... 50%</p>
+                    <p class="terminal-line">&gt; HTML ....... 50%</p>
+                    <p class="terminal-line">&gt; CSS ........ 50%</p>
+                    <p class="terminal-line">&gt; BDD ........ 80%</p>
+
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt-symbol">$</span>
+                        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false"
+                               aria-label="Terminal interactif, tape une commande" placeholder="tape 'help'">
+                    </div>
+                </div>
+            </div>
+            <p class="terminal-hint">Commandes disponibles : help, about, skills, projects, clear</p>
+        </section>
+
+
         <section id="contact" class="reveal">
-            <p class="section-label">05 — CONTACT</p>
+            <p class="section-label">10 — CONTACT</p>
             <h2>Me contacter</h2>
 
             <p>
@@ -224,6 +369,9 @@
         <p>© 2026 Thibaut COUDERAT</p>
         <p>Portfolio personnel</p>
     </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Retour en haut de la page">↑</button>
+    <div class="easter-toast" id="easter-toast">🎮 Konami code activé !</div>
 
     <script src="script.js"></script>
 
