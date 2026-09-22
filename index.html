@@ -18,6 +18,7 @@
                 <a href="#apropos">À propos</a>
                 <a href="#projets">Projets</a>
                 <a href="#competences">Compétences</a>
+                <a href="#diplomes">Diplômes</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
@@ -44,7 +45,7 @@
         </section>
 
 
-        <section id="apropos">
+        <section id="apropos" class="reveal">
             <p class="section-label">01 — À PROPOS</p>
             <h2>Qui suis-je ?</h2>
 
@@ -62,7 +63,7 @@
         </section>
 
 
-        <section id="projets">
+        <section id="projets" class="reveal">
             <p class="section-label">02 — PROJETS</p>
             <h2>Mes projets</h2>
 
@@ -111,23 +112,94 @@
         </section>
 
 
-        <section id="competences">
+        <section id="competences" class="reveal">
             <p class="section-label">03 — COMPÉTENCES</p>
             <h2>Technologies</h2>
+            <p class="skills-hint">Survole (ou touche) un langage pour voir mon niveau.</p>
 
             <div class="skills">
-                <div class="skill">C++</div>
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Git</div>
-                <div class="skill">GitHub</div>
+                <div class="skill" style="--level: 80%">
+                    <span class="skill-name">C++</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
+
+                <div class="skill" style="--level: 50%">
+                    <span class="skill-name">HTML</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                </div>
+
+                <div class="skill" style="--level: 50%">
+                    <span class="skill-name">CSS</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">JavaScript</span>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">Git</span>
+                </div>
+
+                <div class="skill">
+                    <span class="skill-name">GitHub</span>
+                </div>
+
+                <div class="skill" style="--level: 50%">
+                    <span class="skill-name">Java</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">50%</span>
+                    </div>
+                </div>
+
+                <div class="skill" style="--level: 80%">
+                    <span class="skill-name">Bash</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
+
+                <div class="skill" style="--level: 80%">
+                    <span class="skill-name">Bases de données</span>
+                    <div class="skill-level">
+                        <div class="skill-bar"><div class="skill-bar-fill"></div></div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                </div>
             </div>
         </section>
 
 
-        <section id="contact">
-            <p class="section-label">04 — CONTACT</p>
+        <section id="diplomes" class="reveal">
+            <p class="section-label">04 — DIPLÔMES &amp; CERTIFICATIONS</p>
+            <h2>Diplômes &amp; Certifications</h2>
+
+            <div class="diplomas">
+                <article class="diploma-card">
+                    <div class="diploma-icon">🎓</div>
+                    <h3>Baccalauréat général — Mention</h3>
+                    <ul>
+                        <li>Spécialités : Mathématiques et Physique-Chimie</li>
+                        <li>Option : Mathématiques expertes</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+
+        <section id="contact" class="reveal">
+            <p class="section-label">05 — CONTACT</p>
             <h2>Me contacter</h2>
 
             <p>
@@ -149,10 +221,11 @@
 
 
     <footer>
-    <p>© 2026 Thibaut COUDERAT</p>
-    <p>Portfolio personnel</p>
-</footer>
+        <p>© 2026 Thibaut COUDERAT</p>
+        <p>Portfolio personnel</p>
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
-
