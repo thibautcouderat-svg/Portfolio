@@ -107,6 +107,34 @@ section {
 
 
 /* =========================
+   ANIMATIONS AU SCROLL
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    * {
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* =========================
    ACCUEIL
 ========================= */
 
@@ -199,7 +227,7 @@ section {
 
     box-shadow: 0 0 25px rgba(124, 140, 255, 0.15);
 
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, background 0.3s ease;
 }
 
 .button:hover {
@@ -208,6 +236,10 @@ section {
     box-shadow: 0 8px 30px rgba(124, 140, 255, 0.25);
 
     opacity: 0.9;
+}
+
+.button:active {
+    transform: translateY(-1px);
 }
 
 .button.secondary {
@@ -270,7 +302,7 @@ section > p:not(.section-label) {
 
     overflow: hidden;
 
-    transition: 0.3s;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project::before {
@@ -337,12 +369,26 @@ section > p:not(.section-label) {
     font-size: 13px;
 
     border: 1px solid #252936;
+
+    transition: 0.3s;
+}
+
+.tags span:hover {
+    border-color: #7c8cff;
+    color: #7c8cff;
 }
 
 
 /* =========================
    COMPÉTENCES
 ========================= */
+
+.skills-hint {
+    color: #666 !important;
+    font-size: 14px !important;
+    font-style: italic;
+    margin-top: -10px;
+}
 
 .skills {
     display: grid;
@@ -353,6 +399,8 @@ section > p:not(.section-label) {
 }
 
 .skill {
+    position: relative;
+
     padding: 25px;
 
     border: 1px solid #242733;
@@ -363,15 +411,171 @@ section > p:not(.section-label) {
     font-size: 20px;
     font-weight: bold;
 
-    transition: 0.3s;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+
+    cursor: default;
 }
 
-.skill:hover {
+.skill:hover,
+.skill.touched {
     transform: translateY(-4px);
 
     border-color: #7c8cff;
 
     background: #10121a;
+}
+
+.skill-name {
+    display: block;
+}
+
+/* Niveau affiché au survol (ou au tap sur mobile) */
+
+.skill-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    overflow: hidden;
+
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.skill:hover .skill-level,
+.skill.touched .skill-level {
+    max-height: 30px;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+.skill-bar {
+    flex: 1;
+
+    height: 6px;
+
+    background: #191c26;
+    border-radius: 4px;
+
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    width: 0%;
+
+    background: #7c8cff;
+    border-radius: 4px;
+
+    transition: width 0.6s ease;
+}
+
+.skill:hover .skill-bar-fill,
+.skill.touched .skill-bar-fill {
+    width: var(--level);
+}
+
+.skill-percent {
+    font-size: 13px;
+    font-weight: normal;
+    color: #7c8cff;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   DIPLÔMES & CERTIFICATIONS
+========================= */
+
+.diplomas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.diploma-card {
+    position: relative;
+
+    padding: 30px;
+
+    border: 1px solid #242733;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        145deg,
+        #0f1118,
+        #0b0d12
+    );
+
+    overflow: hidden;
+
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diploma-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: #7c8cff;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: 0.3s;
+}
+
+.diploma-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #34394b;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.diploma-card:hover::before {
+    transform: scaleX(1);
+}
+
+.diploma-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.diploma-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.diploma-card ul {
+    list-style: none;
+    color: #aaa;
+}
+
+.diploma-card li {
+    position: relative;
+
+    margin-bottom: 8px;
+    padding-left: 18px;
+}
+
+.diploma-card li::before {
+    content: "▸";
+
+    position: absolute;
+    left: 0;
+
+    color: #7c8cff;
 }
 
 
@@ -449,6 +653,10 @@ footer {
 
     .skills {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .diplomas {
+        grid-template-columns: 1fr;
     }
 
     section h2 {
