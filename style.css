@@ -185,8 +185,7 @@ body.custom-cursor-active a,
 body.custom-cursor-active button,
 body.custom-cursor-active .project,
 body.custom-cursor-active .skill,
-body.custom-cursor-active .diploma-card,
-body.custom-cursor-active .badge {
+body.custom-cursor-active .diploma-card {
     cursor: none;
 }
 
@@ -325,6 +324,34 @@ section {
     margin: auto;
     padding: 120px 30px;
     position: relative;
+}
+
+/* Séparateur discret en haut de chaque section (sauf l'accueil) */
+section:not(.hero)::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 30px;
+    right: 30px;
+
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+
+@keyframes grid-drift {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 48px 48px, 48px 48px; }
+}
+
+.bg-grid {
+    animation: grid-drift 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bg-grid {
+        animation: none;
+    }
 }
 
 
@@ -644,7 +671,7 @@ section > p:not(.section-label) {
 
 .project:hover {
     border-color: var(--border-hover);
-    box-shadow: 0 15px 40px var(--shadow-strong);
+    box-shadow: 0 15px 40px var(--shadow-strong), 0 0 0 1px var(--accent-soft);
 }
 
 .project:hover::before {
@@ -733,6 +760,7 @@ section > p:not(.section-label) {
 .skill.touched {
     border-color: var(--accent);
     background: var(--skill-hover-bg);
+    box-shadow: 0 10px 25px var(--shadow-strong), 0 0 0 1px var(--accent-soft);
 }
 
 .skill-name {
@@ -793,44 +821,6 @@ section > p:not(.section-label) {
 
 
 /* =========================
-   CE QUE J'APPRENDS ACTUELLEMENT
-========================= */
-
-.badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-}
-
-.badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 12px 20px;
-
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    background: var(--skill-bg);
-
-    font-size: 15px;
-    font-weight: bold;
-
-    transition: transform 0.25s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.badge:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-    background: var(--skill-hover-bg);
-}
-
-.badge-icon {
-    font-size: 18px;
-}
-
-
-/* =========================
    DIPLÔMES & CERTIFICATIONS
 ========================= */
 
@@ -876,7 +866,7 @@ section > p:not(.section-label) {
 
 .diploma-card:hover {
     border-color: var(--border-hover);
-    box-shadow: 0 15px 40px var(--shadow-strong);
+    box-shadow: 0 15px 40px var(--shadow-strong), 0 0 0 1px var(--accent-soft);
 }
 
 .diploma-card:hover::before {
@@ -981,30 +971,6 @@ section > p:not(.section-label) {
     position: absolute;
     left: 0;
     color: var(--text-muted-2);
-}
-
-
-/* =========================
-   STATISTIQUES
-========================= */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 42px;
-    font-weight: bold;
-    color: var(--accent);
-}
-
-.stat-label {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-top: 6px;
 }
 
 
@@ -1300,11 +1266,6 @@ body.easter-egg-active {
 
     .diplomas {
         grid-template-columns: 1fr;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 15px;
     }
 
     section h2 {
