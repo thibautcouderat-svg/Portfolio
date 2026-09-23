@@ -81,38 +81,13 @@
         </section>
 
 
-        <section id="stats" class="reveal">
-            <p class="section-label">02 — EN CHIFFRES</p>
-            <h2>Quelques chiffres</h2>
-
-            <div class="stats">
-                <div class="reveal-item" style="--delay: 0s">
-                    <div class="stat-number" data-count="9">0</div>
-                    <div class="stat-label">Technologies</div>
-                </div>
-                <div class="reveal-item" style="--delay: 0.1s">
-                    <div class="stat-number" data-count="2">0</div>
-                    <div class="stat-label">Projets</div>
-                </div>
-                <div class="reveal-item" style="--delay: 0.2s">
-                    <div class="stat-number" data-count="1">0</div>
-                    <div class="stat-label">Diplôme</div>
-                </div>
-                <div class="reveal-item" style="--delay: 0.3s">
-                    <div class="stat-number" data-static="∞">∞</div>
-                    <div class="stat-label">Idées de projets</div>
-                </div>
-            </div>
-        </section>
-
-
         <section id="parcours" class="reveal">
-            <p class="section-label">03 — PARCOURS</p>
+            <p class="section-label">02 — PARCOURS</p>
             <h2>Mon parcours</h2>
 
             <div class="timeline">
                 <div class="timeline-item reveal-item" style="--delay: 0s">
-                    <p class="timeline-date">2024 — 2025</p>
+                    <p class="timeline-date">2025 — 2026</p>
                     <h3>Terminale générale</h3>
                     <ul>
                         <li>Mathématiques</li>
@@ -135,7 +110,7 @@
 
 
         <section id="projets" class="reveal">
-            <p class="section-label">04 — PROJETS</p>
+            <p class="section-label">03 — PROJETS</p>
             <h2>Mes projets</h2>
 
             <div class="filters">
@@ -192,7 +167,7 @@
 
 
         <section id="competences" class="reveal">
-            <p class="section-label">05 — COMPÉTENCES</p>
+            <p class="section-label">04 — COMPÉTENCES</p>
             <h2>Technologies</h2>
             <p class="skills-hint">Survole (ou touche) un langage pour voir mon niveau.</p>
 
@@ -260,23 +235,8 @@
         </section>
 
 
-        <section id="actuellement" class="reveal">
-            <p class="section-label">06 — EN COURS D'APPRENTISSAGE</p>
-            <h2>Ce que j'apprends actuellement</h2>
-
-            <div class="badges">
-                <div class="badge reveal-item" style="--delay: 0s"><span class="badge-icon">🧮</span> Algorithmique</div>
-                <div class="badge reveal-item" style="--delay: 0.05s"><span class="badge-icon">💻</span> C++</div>
-                <div class="badge reveal-item" style="--delay: 0.1s"><span class="badge-icon">🗄️</span> Bases de données</div>
-                <div class="badge reveal-item" style="--delay: 0.15s"><span class="badge-icon">🌐</span> Développement web</div>
-                <div class="badge reveal-item" style="--delay: 0.2s"><span class="badge-icon">📡</span> Réseaux</div>
-                <div class="badge reveal-item" style="--delay: 0.25s"><span class="badge-icon">🔧</span> Git / GitHub</div>
-            </div>
-        </section>
-
-
         <section id="diplomes" class="reveal">
-            <p class="section-label">07 — DIPLÔMES &amp; CERTIFICATIONS</p>
+            <p class="section-label">05 — DIPLÔMES &amp; CERTIFICATIONS</p>
             <h2>Diplômes &amp; Certifications</h2>
 
             <div class="diplomas">
@@ -294,7 +254,7 @@
 
 
         <section id="github" class="reveal">
-            <p class="section-label">08 — GITHUB</p>
+            <p class="section-label">06 — GITHUB</p>
             <h2>Mes projets GitHub</h2>
 
             <div class="github-box">
@@ -310,10 +270,14 @@
 
 
         <section id="terminal-section" class="reveal">
-            <p class="section-label">09 — TERMINAL</p>
+            <p class="section-label">07 — TERMINAL</p>
             <h2>Petit terminal</h2>
+            <p>
+                Un vrai petit terminal interactif : tape une commande
+                et appuie sur Entrée.
+            </p>
 
-            <div class="terminal">
+            <div class="terminal" id="terminal" tabindex="0">
                 <div class="terminal-header">
                     <span class="terminal-dot red"></span>
                     <span class="terminal-dot yellow"></span>
@@ -322,29 +286,21 @@
                 </div>
 
                 <div class="terminal-body" id="terminal-body">
-                    <p class="terminal-line prompt">$ whoami</p>
-                    <p class="terminal-line">&gt; Thibaut</p>
-                    <p class="terminal-line prompt">$ skills</p>
-                    <p class="terminal-line">&gt; C++ ........ 80%</p>
-                    <p class="terminal-line">&gt; Bash ....... 80%</p>
-                    <p class="terminal-line">&gt; Java ....... 50%</p>
-                    <p class="terminal-line">&gt; HTML ....... 50%</p>
-                    <p class="terminal-line">&gt; CSS ........ 50%</p>
-                    <p class="terminal-line">&gt; BDD ........ 80%</p>
+                    <p class="terminal-line">Bienvenue ! Tape <strong>help</strong> pour voir les commandes disponibles.</p>
 
                     <div class="terminal-input-line">
                         <span class="terminal-prompt-symbol">$</span>
                         <input type="text" id="terminal-input" autocomplete="off" spellcheck="false"
-                               aria-label="Terminal interactif, tape une commande" placeholder="tape 'help'">
+                               autocapitalize="off" aria-label="Terminal interactif, tape une commande" placeholder="tape 'help'">
                     </div>
                 </div>
             </div>
-            <p class="terminal-hint">Commandes disponibles : help, about, skills, projects, clear</p>
+            <p class="terminal-hint">Commandes : help · about · skills · projects · contact · whoami · clear</p>
         </section>
 
 
         <section id="contact" class="reveal">
-            <p class="section-label">10 — CONTACT</p>
+            <p class="section-label">08 — CONTACT</p>
             <h2>Me contacter</h2>
 
             <p>
