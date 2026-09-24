@@ -117,6 +117,92 @@ a {
 
 
 /* =========================
+   HALOS LUMINEUX (déplacement lent, très discret)
+========================= */
+
+.halo {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.10;
+    background: var(--accent);
+    will-change: transform;
+}
+
+.halo-1 {
+    width: 380px;
+    height: 380px;
+    top: 10%;
+    left: -5%;
+    animation: halo-float-1 22s ease-in-out infinite;
+}
+
+.halo-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 5%;
+    right: -5%;
+    background: #b388ff;
+    animation: halo-float-2 26s ease-in-out infinite;
+}
+
+@keyframes halo-float-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, 40px); }
+}
+
+@keyframes halo-float-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, -30px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .halo-1, .halo-2 { animation: none; }
+}
+
+@media (max-width: 800px) {
+    .halo-1, .halo-2 { display: none; }
+}
+
+
+/* =========================
+   PARTICULES DISCRETES (parallaxe léger à la souris)
+========================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.25;
+    will-change: transform;
+    animation: particle-drift linear infinite;
+}
+
+@keyframes particle-drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .particle { animation: none; }
+}
+
+@media (max-width: 800px) {
+    .particles { display: none; }
+}
+
+
+/* =========================
    LUMIERE QUI SUIT LA SOURIS (désactivée sur tactile / reduced motion)
 ========================= */
 
@@ -738,6 +824,19 @@ section > p:not(.section-label) {
     gap: 15px;
 }
 
+.skills-subtitle {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted-2);
+    margin: 35px 0 15px;
+}
+
+.skills-tools {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 420px;
+}
+
 .skill {
     position: relative;
 
@@ -871,11 +970,6 @@ section > p:not(.section-label) {
 
 .diploma-card:hover::before {
     transform: scaleX(1);
-}
-
-.diploma-icon {
-    font-size: 36px;
-    margin-bottom: 15px;
 }
 
 .diploma-card h3 {
